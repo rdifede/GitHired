@@ -1,0 +1,5 @@
+<%= form_for(:favejob, url: "/users/#{params[:id]}/favejobs/search", :html => {:class => "form"}) do |f|%>
+  <%= f.text_field :location, class: "robotoMono formInput", placeholder: "Location" %>
+  <%= f.text_field :language, class: "robotoMono formInput", placeholder: "Language"%>
+  <%= f.submit"Search", class: "button robotoCondensedReg" %>
+<% end %>

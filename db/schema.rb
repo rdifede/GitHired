@@ -10,9 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20170719161631) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  create_table "favejobs", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.string "location"
+    t.string "website"
+    t.string "position"
+    t.string "apply"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_favejobs_on_user_id"
+  end
+
+  create_table "to_dos", force: :cascade do |t|
+    t.boolean "emailed"
+    t.boolean "responded"
+    t.string "note"
+    t.integer "favejob_id"
+    t.index ["favejob_id"], name: "index_to_dos_on_favejob_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.string "name"
+    t.string "location"
+    t.string "skills"
+    t.string "bio"
+  end
 
 end

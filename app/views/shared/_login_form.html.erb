@@ -1,0 +1,5 @@
+<%= form_for(:session, url: login_path, :html=> {:class => "form"}) do |f| %>
+  <%= f.email_field :email, placeholder:"email", class: "formInput robotoMono" %>
+  <%= f.password_field :password, placeholder: "password", class: "formInput robotoMono"%>
+  <%= f.submit "Log In", class: "button robotoCondensedReg" %>
+<% end %>

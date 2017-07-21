@@ -1,0 +1,6 @@
+<%= image_tag("gitHired_logo_1", class:"logoMain")%>
+<div class = "formWrapper">
+  <h1 class= "robotoCondensedBold">Sign Up</h1>
+  <%= render "shared/signup_form", {user: @user} %></br>
+  <p><%= link_to "Already have an account? Log In!", login_path, class: "link robotoMono"%></p>
+</div>

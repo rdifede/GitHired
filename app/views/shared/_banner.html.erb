@@ -1,0 +1,6 @@
+ <%= image_tag("gitHired_banner", class: "logoBanner")%>
+
+<nav>
+  <%= button_to("Logout", logout_path, method: "delete", class: "button robotoMono logout") %>
+  <%= button_to("Profile", "/users/:id", method: "get", class: "button robotoMono profile") %>
+</nav>

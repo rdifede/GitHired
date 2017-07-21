@@ -1,0 +1,28 @@
+<div class="logoBanner-backgroundDiv">
+ <%= render './shared/banner' %>
+</div>
+
+
+
+<h1 class = "robotoCondensedBold">Let's git you hired, <%= @user.name%>!</h1>
+
+<a href="/users/<%="#{params[:id]}"%>/favejobs/search" class = "link robotoMono">Search for a job!</a>
+
+
+<% if @favejobs %>
+  <% @favejobs.each do |x| %>
+    <div class = "">
+      <h3 class = "robotoCondensedBold"><%= x.title %></h3>
+      <p class = "robotoCondensedReg"> Location: <%= x.location %></p>
+      <p class = "robotoMono">Description: <%= x.description %></p>
+      <%= form_for(:job, url: "/users/:id" , method: "get") do |f| %>
+        <%= f.hidden_field(:id, :value => x.id) %>
+        <%= f.submit("Add notes", class: "button") %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
+
+<%= @todo.each do |x| %>
+  </div>
+  </div>

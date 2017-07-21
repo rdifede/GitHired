@@ -1,0 +1,38 @@
+<div class="logoBanner-backgroundDiv">
+  <%= render './shared/banner' %>
+</div>
+
+<div class = "formWrapper">
+  <h1 class="robotoCondensedBold">Git dat job</h1>
+  <br><span class = "robotoMono">Enter your search below!</span>
+
+  <div class = "jobsearchFormDiv">
+    <%= render :partial => "shared/jobsearch_form" %>
+  </div>
+</div>
+
+<div class = "resultsWrapper">
+  <% if @response %>
+  <% @response .each do |x| %>
+  <div class = "result">
+    <h3 class = "robotoMono"><%= x['title'] %></h3>
+    <p class = "robotoCondensedReg"><%= x['company']%></p>
+    <p class = "robotoCondensedReg"><%= x['location'] %></p>
+  <%= form_for(:job, url: new_job_path, :method => "get") do |f| %>
+  <%= f.hidden_field(:title, :value => x['title']) %>
+  <%= f.hidden_field(:location, :value => x['location'])%>
+  <%= f.hidden_field(:description, :value => x['description'])%>
+  <%= f.hidden_field(:website, :value => x['company_url'])%>
+  <%= f.hidden_field(:position, :value => x['type'])%>
+  <%= f.hidden_field(:apply, :value => x['how_to_apply'])%>
+  <%= f.hidden_field(:user, :value => session[:user_id])%>
+  <%= f.submit "view", :class => "button viewButton" %>
+  <%end%>
+</div>
+  <%end%>
+  <%end%>
+</div>
+
+
+<!-- NOTE:
+Find all p tags, if the length is less than a certain number (say, 20) add a class -->
